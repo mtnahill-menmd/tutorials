@@ -64,8 +64,8 @@ class Vonage(models.Model):
     answer_url = fields.Html()
     event_url = fields.Html()
     # did not include "connect" or "talk" fields
-    phone_number_to = fields.Char()
-    phone_number_from = fields.Char()
+    phone_number_to = fields.Char(required=True)
+    phone_number_from = fields.Char(required=True)
     agent_id = fields.Char()
     agent_name = fields.Char()
     agent_summary_owner_name = fields.Char()
