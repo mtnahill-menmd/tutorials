@@ -20,13 +20,5 @@ class Workload(models.Model):
         default=0,
         readonly=True,
     )
-    semi_live = fields.Integer(
-        string="Semi-Live Interactions",
-        default=0,
-        readonly=True,
-    )
-    non_live = fields.Integer(
-        string="Non-Live Interactions",
-        default=0,
-        readonly=True,
-    )
+    semi_live = fields.Integer(string="Semi-Live Interactions", default=0)
+    non_live = fields.Integer(string="Non-Live Interactions", default=0)

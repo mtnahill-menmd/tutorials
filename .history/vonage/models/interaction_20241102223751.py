@@ -31,7 +31,6 @@ class Interaction(models.Model):
     duration = fields.Integer(
         string="Duration",
         help="Duration in seconds",
-        readonly=True,
     )
     status = fields.Selection(
         [
@@ -40,13 +39,6 @@ class Interaction(models.Model):
             ("missed", "Missed"),
         ],
         string="Status",
-        readonly=True,
     )
-    channel = fields.Char(
-        string="Channel",
-        readonly=True,
-    )
-    reason = fields.Char(
-        string="Reason",
-        readonly=True,
-    )
+    channel = fields.Char(string="Channel")
+    reason = fields.Char(string="Reason")

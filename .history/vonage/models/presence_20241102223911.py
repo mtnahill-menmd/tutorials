@@ -27,7 +27,4 @@ class Presence(models.Model):
         string="Presence Since",
         readonly=True,
     )
-    eligible_for_routing = fields.Boolean(
-        string="Eligible for Routing",
-        readonly=True,
-    )
+    eligible_for_routing = fields.Boolean(string="Eligible for Routing")

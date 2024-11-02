@@ -30,5 +30,4 @@ class VCCAgent(models.Model):
         "vcc.interaction",
         "agent_id",
         string="Interactions",
-        readonly=True,
     )

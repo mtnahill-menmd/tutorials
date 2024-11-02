@@ -15,18 +15,15 @@ class PresenceDefinition(models.Model):
         string="Presence Name",
         required=True,
         help="The display name of the presence status such as Available or Logged Out",
-        readonly=True,
     )
     description = fields.Char(
         string="Description",
         help="A descriptive field to provide additional information about the presence status",
-        readonly=True,
     )
     selectable = fields.Boolean(
         string="Selectable",
         default=True,
         help="A boolean indicating whether agents can select this status manually. For example, some statuses may be system-controlled.",
-        readonly=True,
     )
     category = fields.Selection(
         [
@@ -39,5 +36,4 @@ class PresenceDefinition(models.Model):
         string="Category",
         required=True,
         help="The category of the presence status, which helps group statuses into categories like Available, Away or Busy. This is useful for filtering and categorizing presence types.",
-        readonly=True,
     )

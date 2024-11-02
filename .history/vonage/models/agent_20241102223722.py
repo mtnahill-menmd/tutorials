@@ -18,17 +18,14 @@ class VCCAgent(models.Model):
         "vcc.presence",
         "agent_id",
         string="Presence Records",
-        readonly=True,
     )
     workload_ids = fields.One2many(
         "vcc.workload",
         "agent_id",
         string="Workload Records",
-        readonly=True,
     )
     interaction_ids = fields.One2many(
         "vcc.interaction",
         "agent_id",
         string="Interactions",
-        readonly=True,
     )

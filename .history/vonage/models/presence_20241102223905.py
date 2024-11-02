@@ -19,15 +19,6 @@ class Presence(models.Model):
         string="Presence Name",
         readonly=True,
     )
-    description = fields.Char(
-        string="Description",
-        readonly=True,
-    )
-    since = fields.Datetime(
-        string="Presence Since",
-        readonly=True,
-    )
-    eligible_for_routing = fields.Boolean(
-        string="Eligible for Routing",
-        readonly=True,
-    )
+    description = fields.Char(string="Description")
+    since = fields.Datetime(string="Presence Since")
+    eligible_for_routing = fields.Boolean(string="Eligible for Routing")

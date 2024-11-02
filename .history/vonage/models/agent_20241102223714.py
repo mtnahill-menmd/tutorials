@@ -10,25 +10,19 @@ class VCCAgent(models.Model):
         required=True,
         readonly=True,
     )
-    name = fields.Char(
-        string="Agent Name",
-        readonly=True,
-    )
+    name = fields.Char(string="Agent Name")
     presence_ids = fields.One2many(
         "vcc.presence",
         "agent_id",
         string="Presence Records",
-        readonly=True,
     )
     workload_ids = fields.One2many(
         "vcc.workload",
         "agent_id",
         string="Workload Records",
-        readonly=True,
     )
     interaction_ids = fields.One2many(
         "vcc.interaction",
         "agent_id",
         string="Interactions",
-        readonly=True,
     )

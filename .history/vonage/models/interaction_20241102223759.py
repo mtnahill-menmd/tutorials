@@ -42,11 +42,5 @@ class Interaction(models.Model):
         string="Status",
         readonly=True,
     )
-    channel = fields.Char(
-        string="Channel",
-        readonly=True,
-    )
-    reason = fields.Char(
-        string="Reason",
-        readonly=True,
-    )
+    channel = fields.Char(string="Channel")
+    reason = fields.Char(string="Reason")

@@ -15,18 +15,6 @@ class Workload(models.Model):
         string="Workload Since",
         readonly=True,
     )
-    calls = fields.Integer(
-        string="Calls",
-        default=0,
-        readonly=True,
-    )
-    semi_live = fields.Integer(
-        string="Semi-Live Interactions",
-        default=0,
-        readonly=True,
-    )
-    non_live = fields.Integer(
-        string="Non-Live Interactions",
-        default=0,
-        readonly=True,
-    )
+    calls = fields.Integer(string="Calls", default=0)
+    semi_live = fields.Integer(string="Semi-Live Interactions", default=0)
+    non_live = fields.Integer(string="Non-Live Interactions", default=0)

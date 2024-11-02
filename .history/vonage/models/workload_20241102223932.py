@@ -25,8 +25,4 @@ class Workload(models.Model):
         default=0,
         readonly=True,
     )
-    non_live = fields.Integer(
-        string="Non-Live Interactions",
-        default=0,
-        readonly=True,
-    )
+    non_live = fields.Integer(string="Non-Live Interactions", default=0)
