@@ -28,12 +28,10 @@ class VCCAgent(models.Model):
         "agent_id",
         string="Workload Records",
         readonly=True,
-        copy=False,
     )
     interaction_ids = fields.One2many(
         "vcc.interaction",
         "agent_id",
         string="Interactions",
         readonly=True,
-        copy=False,
     )

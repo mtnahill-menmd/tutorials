@@ -15,25 +15,20 @@ class Presence(models.Model):
     presence_id = fields.Char(
         string="Presence ID",
         readonly=True,
-        copy=False,
     )
     name = fields.Char(
         string="Presence Name",
         readonly=True,
-        copy=False,
     )
     description = fields.Char(
         string="Description",
         readonly=True,
-        copy=False,
     )
     since = fields.Datetime(
         string="Presence Since",
         readonly=True,
-        copy=False,
     )
     eligible_for_routing = fields.Boolean(
         string="Eligible for Routing",
         readonly=True,
-        copy=False,
     )

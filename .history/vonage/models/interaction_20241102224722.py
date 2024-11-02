@@ -56,5 +56,4 @@ class Interaction(models.Model):
     reason = fields.Char(
         string="Reason",
         readonly=True,
-        copy=False,
     )

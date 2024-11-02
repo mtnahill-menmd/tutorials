@@ -35,5 +35,4 @@ class Presence(models.Model):
     eligible_for_routing = fields.Boolean(
         string="Eligible for Routing",
         readonly=True,
-        copy=False,
     )

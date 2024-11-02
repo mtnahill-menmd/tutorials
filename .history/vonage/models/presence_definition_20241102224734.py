@@ -30,7 +30,6 @@ class PresenceDefinition(models.Model):
         default=True,
         help="A boolean indicating whether agents can select this status manually. For example, some statuses may be system-controlled.",
         readonly=True,
-        copy=False,
     )
     category = fields.Selection(
         [
@@ -44,5 +43,4 @@ class PresenceDefinition(models.Model):
         required=True,
         help="The category of the presence status, which helps group statuses into categories like Available, Away or Busy. This is useful for filtering and categorizing presence types.",
         readonly=True,
-        copy=False,
     )

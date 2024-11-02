@@ -44,5 +44,4 @@ class PresenceDefinition(models.Model):
         required=True,
         help="The category of the presence status, which helps group statuses into categories like Available, Away or Busy. This is useful for filtering and categorizing presence types.",
         readonly=True,
-        copy=False,
     )

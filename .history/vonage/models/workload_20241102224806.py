@@ -33,5 +33,4 @@ class Workload(models.Model):
         string="Non-Live Interactions",
         default=0,
         readonly=True,
-        copy=False,
     )

@@ -20,23 +20,19 @@ class Interaction(models.Model):
         ],
         string="Interaction Type",
         readonly=True,
-        copy=False,
     )
     start_time = fields.Datetime(
         string="Start Time",
         readonly=True,
-        copy=False,
     )
     end_time = fields.Datetime(
         string="End Time",
         readonly=True,
-        copy=False,
     )
     duration = fields.Integer(
         string="Duration",
         help="Duration in seconds",
         readonly=True,
-        copy=False,
     )
     status = fields.Selection(
         [
@@ -46,15 +42,12 @@ class Interaction(models.Model):
         ],
         string="Status",
         readonly=True,
-        copy=False,
     )
     channel = fields.Char(
         string="Channel",
         readonly=True,
-        copy=False,
     )
     reason = fields.Char(
         string="Reason",
         readonly=True,
-        copy=False,
     )

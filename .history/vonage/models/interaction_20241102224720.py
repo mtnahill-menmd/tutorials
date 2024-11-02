@@ -51,10 +51,8 @@ class Interaction(models.Model):
     channel = fields.Char(
         string="Channel",
         readonly=True,
-        copy=False,
     )
     reason = fields.Char(
         string="Reason",
         readonly=True,
-        copy=False,
     )
