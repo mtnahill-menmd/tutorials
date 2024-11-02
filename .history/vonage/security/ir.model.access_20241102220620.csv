@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+vonage.access_vcc_agent,access_vcc_agent,vonage.model_vcc_agent,base.group_user,1,0,0,0
+vonage.access_vcc_interaction,access_vcc_interaction,vonage.model_vcc_interaction,base.group_user,1,0,0,0
+vonage.access_vcc_presence_definition,access_vcc_presence_definition,vonage.model_vcc_presence_definition,base.group_user,1,0,0,0
+vonage.access_vcc_presence,access_vcc_presence,vonage.model_vcc_presence,base.group_user,1,0,0,0   
+vonage.access_vcc_workload,access_vcc_workload,vonage.model_vcc_workload,base.group_user,1,0,0,0   
