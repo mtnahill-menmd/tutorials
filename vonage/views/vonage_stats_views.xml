@@ -5,9 +5,9 @@
         <field name="res_model">agent_availability</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <record id="vonage_model_action2" model="ir.actions.act_window">
-        <field name="name">Agents API</field>
-        <field name="res_model">vonage</field>
+    <record id="presence_definition" model="ir.actions.act_window">
+        <field name="name">Presence Definition</field>
+        <field name="res_model">presence_definition</field>
         <field name="view_mode">tree,form</field>
     </record>
         <record id="vonage_model_action3" model="ir.actions.act_window">

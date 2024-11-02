@@ -3,7 +3,7 @@
     <menuitem id="test_menu_root" name="Vonage">
         <menuitem id="test_first_level_menu" name="Stats">
             <menuitem id="agent_availability_menu" action="agent_availability"/>
-            <menuitem id="test_model_menu_action2" action="vonage_model_action2"/>
+            <menuitem id="presence_definition_menu" action="presence_definition"/>
             <menuitem id="test_model_menu_action3" action="vonage_model_action3"/>
             <menuitem id="test_model_menu_action4" action="vonage_model_action4"/>
             <menuitem id="test_model_menu_action5" action="vonage_model_action5"/>
