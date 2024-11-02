@@ -2,7 +2,7 @@ from odoo import fields, models
 
 
 class Workload(models.Model):
-    _name = "vcc.workload"
+    _name = "workload"
     _description = "VCC Workload. Records workload metrics, such as calls and semi-live/non-live interactions."
 
     agent_id = fields.Many2one(

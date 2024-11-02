@@ -13,7 +13,7 @@ class VCCAgent(models.Model):
         string="Presence Records",
     )
     workload_ids = fields.One2many(
-        "vcc.workload",
+        "vcc_workload",
         "agent_id",
         string="Workload Records",
     )

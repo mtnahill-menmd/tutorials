@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="action_vcc_agent" model="ir.actions.act_window">
+        <field name="name"></field>
+        <field name="res_model">vcc.agent</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="presence_definition" model="ir.actions.act_window">
+        <field name="name">Presence Definition</field>
+        <field name="res_model">presence_definition</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <record id="vonage_model_action3" model="ir.actions.act_window">
+        <field name="name">Conversation Analyzer API</field>
+        <field name="res_model">vonage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <record id="vonage_model_action4" model="ir.actions.act_window">
+        <field name="name">Insights Stats API</field>
+        <field name="res_model">vonage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <record id="vonage_model_action5" model="ir.actions.act_window">
+        <field name="name">Interaction Content API</field>
+        <field name="res_model">vonage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <record id="vonage_model_action6" model="ir.actions.act_window">
+        <field name="name">Interaction Content Export API</field>
+        <field name="res_model">vonage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <record id="vonage_model_action7" model="ir.actions.act_window">
+        <field name="name">Interactions API</field>
+        <field name="res_model">vonage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <record id="vonage_model_action8" model="ir.actions.act_window">
+        <field name="name">User Admin API</field>
+        <field name="res_model">vonage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <record id="vonage_model_action9" model="ir.actions.act_window">
+        <field name="name">Webhooks API</field>
+        <field name="res_model">vonage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

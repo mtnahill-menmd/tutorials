@@ -20,7 +20,7 @@ class Interaction(models.Model):
     )
     start_time = fields.Datetime(string="Start Time")
     end_time = fields.Datetime(string="End Time")
-    duration = fields.Integer(
+    duration = fields.Duration(
         string="Duration",
         help="Duration in seconds",
     )

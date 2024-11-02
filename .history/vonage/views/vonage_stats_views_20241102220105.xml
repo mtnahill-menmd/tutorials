@@ -10,7 +10,7 @@
         <field name="res_model">vcc.presence</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <record id="action_vcc_workload" model="ir.actions.act_window">
+        <record id="action_vcc_workload" model="ir.actions.act_window">
         <field name="name">Workloads</field>
         <field name="res_model">vcc.workload</field>
         <field name="view_mode">tree,form</field>
