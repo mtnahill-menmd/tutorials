@@ -39,7 +39,7 @@
                 <field name="expected_price" string="Expected Price"/>
                 <field name="selling_price" string="Selling Price"/>
                 <field name="date_availability" string="Available From"/>
-                <!-- <field name="tag_ids" string="" widget="many2many_tags"/> -->
+                <field name="tag_ids" string="" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
@@ -51,7 +51,7 @@
                 <sheet>
                     <div class="oe_title">
                         <h1><field name="name" string=""/></h1>
-                        <!-- <field name="tag_ids" string="" widget="many2many_tags"/> -->
+                        <field name="tag_ids" string="" widget="many2many_tags"/>
                     </div>
                     <group>
                         <group>
