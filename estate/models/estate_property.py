@@ -3,7 +3,7 @@ from dateutil.relativedelta import relativedelta
 
 
 class EstateProperty(models.Model):
-    _name = "estate.property"
+    _name = "estate_property"
     _description = "This module describes all the property info about each estate sale"
 
     name = fields.Char(required=True)
