@@ -1,5 +1,27 @@
 <?xml version="1.0"?>
 <odoo>
+    <record id="property_offer_tree" model="ir.ui.view">
+        <field name="name">estate_property.offer.tree</field>
+        <field name="model">estate_property.offer</field>
+        <field name="arch" type="xml">
+            <tree string="Offer">
+                <field name="price"/>
+                <field name="status"/>
+                <!-- <field name="partner_id"/> -->
+            </tree>
+        </field>
+    </record>
+    <record id="property_offer_form" model="ir.ui.view">
+        <field name="name">estate_property.offer.form</field>
+        <field name="model">estate_property.offer</field>
+        <field name="arch" type="xml">
+            <tree string="Offer">
+                <field name="price"/>
+                <field name="status"/>
+                <!-- <field name="partner_id"/> -->
+            </tree>
+        </field>
+    </record>
     <record id="test_model_action" model="ir.actions.act_window">
         <field name="name">Properties</field>
         <field name="res_model">estate_property</field>
@@ -17,6 +39,7 @@
                 <field name="expected_price" string="Expected Price"/>
                 <field name="selling_price" string="Selling Price"/>
                 <field name="date_availability" string="Available From"/>
+                <!-- <field name="tag_ids" string="" widget="many2many_tags"/> -->
             </tree>
         </field>
     </record>
@@ -28,6 +51,7 @@
                 <sheet>
                     <div class="oe_title">
                         <h1><field name="name" string=""/></h1>
+                        <!-- <field name="tag_ids" string="" widget="many2many_tags"/> -->
                     </div>
                     <group>
                         <group>
@@ -50,6 +74,17 @@
                                 <field name="garden" string="Garden" />
                                 <field name="garden_area" string="Garden Area (sqm)"/>
                                 <field name="garden_orientation" string="Garden Orientation"/>
+                            </group>
+                        </page>
+                        <page string="Offers">
+                            <!-- <group>
+                                <field name="offer_ids"/>
+                            </group> -->
+                        </page>
+                        <page string="Other Info">
+                            <group>
+                                <field name="user_id" string="Salesman"/>
+                                <field name="partner_id" string="Buyer"/>
                             </group>
                         </page>
                     </notebook>
@@ -78,4 +113,10 @@
         <field name="res_model">estate_property.type</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record id="property_view_tag_action" model="ir.actions.act_window">
+        <field name="name">Property Tags</field>
+        <field name="res_model">estate_property.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
 </odoo>
