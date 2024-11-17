@@ -7,7 +7,7 @@
             <tree string="Offer">
                 <field name="price"/>
                 <field name="status"/>
-                <!-- <field name="partner_id"/> -->
+                <field name="property_id"/>
             </tree>
         </field>
     </record>
@@ -18,7 +18,7 @@
             <tree string="Offer">
                 <field name="price"/>
                 <field name="status"/>
-                <!-- <field name="partner_id"/> -->
+                <field name="property_id"/>
             </tree>
         </field>
     </record>
@@ -77,9 +77,9 @@
                             </group>
                         </page>
                         <page string="Offers">
-                            <!-- <group>
+                            <group>
                                 <field name="offer_ids"/>
-                            </group> -->
+                            </group>
                         </page>
                         <page string="Other Info">
                             <group>
