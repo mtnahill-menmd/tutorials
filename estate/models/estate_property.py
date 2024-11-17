@@ -78,3 +78,9 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = 0
             self.garden_orientation = None
+
+    # Cancel Button
+    def cancel_property(self):
+        for record in self:
+            record.state = "cancelled"
+        return True
