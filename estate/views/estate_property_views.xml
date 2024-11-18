@@ -109,20 +109,45 @@
         <field name="res_model">estate.property.type</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record id="property_type_tree_view" model="ir.ui.view">
+        <field name="name">estate.property.type.tree</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <tree string="Property Types">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="property_type_form_view" model="ir.ui.view">
+        <field name="name">estate.property.type.form</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <form string="Property Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="property_ids">
+                            <tree>
+                                <field name="name" string = "Title"/>
+                                <field name="expected_price" string="Expected Price"/>
+                                <field name="state" string="Status"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="property_type_action" model="ir.actions.act_window">
+        <field name="name">Property Types</field>
+        <field name="res_model">estate.property.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="property_type_tree_view"/>
+    </record>
     <record id="property_view_tag_action" model="ir.actions.act_window">
         <field name="name">Property Tags</field>
         <field name="res_model">estate.property.tag</field>
         <field name="view_mode">tree,form</field>
-        <form>
-            <field name="Property Types"/>
-            <field name="property_ids">
-                <tree>
-                    <field name="name"/>
-                    <field name="expected_price"/>
-                    <field name="state"/>
-                </tree>
-            </field>
-        </form>
     </record>
     <record id="property_offer_form" model="ir.ui.view">
         <field name="name">estate.property.offer.form</field>
