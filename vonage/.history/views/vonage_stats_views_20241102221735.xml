@@ -20,10 +20,4 @@
         <field name="res_model">vcc.interaction</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <record id="action_vonage_auth_integration" model="ir.actions.act_window">
-        <field name="name">Authentication Test</field>
-        <field name="res_model">vonage.auth.integration</field>
-        <field name="view_mode">form</field>
-        <field name="target">current</field>
-    </record>
 </odoo>

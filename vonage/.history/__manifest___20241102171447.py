@@ -11,6 +11,5 @@
         "security/ir.model.access.csv",
         "views/vonage_stats_views.xml",
         "views/vonage_menus.xml",
-        "views/auth_integration_view.xml",
     ],
 }
