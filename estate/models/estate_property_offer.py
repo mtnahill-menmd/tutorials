@@ -32,6 +32,15 @@ class EstatePropertyOffer(models.Model):
         string="Validity (days)",
     )
 
+    # Chapter 10 validation
+    _sql_constraints = [
+        (
+            "positive_offer",
+            "CHECK(price > 0)",
+            "Offer must be positive",
+        )
+    ]
+
     @api.depends("validity")
     def _compute_validity_deadline(self):
         for record in self:
@@ -45,3 +54,14 @@ class EstatePropertyOffer(models.Model):
             origin_date = create_date or fields.Date.today()
             datetime_difference = record.date_deadline - origin_date
             record.validity = datetime_difference.days
+
+    # Chapter 9 Accept and Refuse Buttons
+    def accept_offer(self):
+        for record in self:
+            record.status = "accepted"
+        return True
+
+    def refuse_offer(self):
+        for record in self:
+            record.status = "refused"
+        return True
