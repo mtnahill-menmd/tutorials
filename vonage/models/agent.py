@@ -43,11 +43,9 @@ class VCCAgent(models.Model):
         region = "nam"
         url = "https://{region}.api.cc.vonage.com/useradmin/users?include=All"
 
-        data = {
+        data = {}
 
-        }
-
-        headers = {"Authorization": "Bearer" {token}}
+        # headers = {"Authorization": "Bearer" {token}}
 
     def parse_users(self):
         {
