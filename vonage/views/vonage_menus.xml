@@ -5,5 +5,5 @@
     <menuitem id="menu_vcc_presence" name="Presence Records" parent="menu_vcc_root" action="action_vcc_presence" sequence="20"/>
     <menuitem id="menu_vcc_workload" name="Workloads" parent="menu_vcc_root" action="action_vcc_workload" sequence="30"/>
     <menuitem id="menu_vcc_interactions" name="Interactions" parent="menu_vcc_root" action="action_vcc_interaction" sequence="40"/>
-    <menuitem id="menu_vcc_auth_test" name="Authentication Test" parent="menu_vcc_root" action="action_vonage_auth_integration" sequence="50"/>
+    <menuitem id="menu_vcc_auth_test" name="Authentication Test" parent="menu_vcc_root" action="auth_view_tree_action" sequence="50"/>
 </odoo>

@@ -1,13 +1,18 @@
 <?xml version="1.0"?>
 <odoo>
+    <record id="auth_view_tree_action" model="ir.actions.act_window">
+        <field name="name">Authentication Test</field>
+        <field name="res_model">vonage.auth.integration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
     <record id="view_vonage_auth_integration_form" model="ir.ui.view">
         <field name="name">vonage.auth.integration.form</field>
-        <field name="moddl">vonage.auth.integration</field>
-        <field name="atch" type="xml">
+        <field name="model">vonage.auth.integration</field>
+        <field name="arch" type="xml">
             <form string="Vonage Authentication Test">
                 <group>
-                    <field name="token_response" readonly=True/>
-                    <button name="action_test_vonage_token" type="object" string="Test Token" class="btn-primary"/>
+                    <field name="token_response" readonly="1"/>
+                    <button name="get_vonage_token" type="object" string="Test Token" class="btn-primary"/>
                 </group>
             </form>
         </field>

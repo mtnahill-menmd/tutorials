@@ -9,8 +9,8 @@
     "installable": True,
     "data": [
         "security/ir.model.access.csv",
+        "views/auth_integration_view.xml",
         "views/vonage_stats_views.xml",
         "views/vonage_menus.xml",
-        "views/auth_integration_view.xml",
     ],
 }

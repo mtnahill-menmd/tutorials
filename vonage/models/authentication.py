@@ -4,7 +4,9 @@ from odoo import http, models, fields
 
 
 class VonageIntegration(models.Model):
-    _name = "vonage.integration"
+    _name = "vonage.auth.integration"
+
+    token_response = fields.Char(string="Token Response")
 
     def get_vonage_token(self):
         # credentials - should live somewhere more secure
@@ -13,14 +15,14 @@ class VonageIntegration(models.Model):
         region = "nam"
 
         # Endpoint URL
-        url = f"https://{region}.cc.conage.com/Auth/connect/token"
+        url = f"https://{region}.cc.vonage.com/Auth/connect/token"
 
         # Body parameters
         data = {
             "grant_type": "client_credentials",
             "client_id": client_id,
             "client_secret": client_secret,
-            "scope": "users:read users:write stats interaction-content:read interaction",
+            "scope": "users:read users:write stats interaction-content:read interactions:write agents-availability:read",
         }
 
         # Headers
@@ -29,10 +31,16 @@ class VonageIntegration(models.Model):
         # POST request
         response = requests.post(url, headers=headers, data=data)
 
+        # Write to field
+        self.token_response = response
+
         # Check response
         if response.status_code == 200:
             token_data = response.json()
             return token_data
         else:
             # Handle errors
-            return {"error": response.text, "status_code": response.status_code}
+            return {
+                "error": response.text,
+                "status_code": response.status_code,
+            }
