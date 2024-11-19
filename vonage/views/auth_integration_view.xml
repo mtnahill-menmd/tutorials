@@ -12,7 +12,7 @@
             <form string="Vonage Authentication Test">
                 <group>
                     <field name="token_response" readonly="1"/>
-                    <button name="get_vonage_token" type="object" string="Test Token" class="btn-primary"/>
+                    <button name="generate_vonage_token" type="object" string="Test Token" class="btn-primary"/>
                 </group>
             </form>
         </field>
