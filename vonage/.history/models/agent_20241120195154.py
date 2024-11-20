@@ -76,17 +76,6 @@ class VCCAgent(models.Model):
                 f"Failed to fetch agents: {response.status_code} - {response.text}"
             )
 
-        # Test data:
-        print(f"MT TEST DATA")
-        test_users = [
-            {"userId": "1", "name": "Agent A", "email": "a@example.com"},
-            {"userId": "2", "name": "Agent B", "email": "b@example.com"},
-            {"userId": "3", "name": "Agent C", "email": "c@example.com"},
-        ]
-
-        # Parse the test data
-        self.env["vcc.agent"].parse_users(test_users)
-
         # data = {}
 
     def parse_users(self, users):

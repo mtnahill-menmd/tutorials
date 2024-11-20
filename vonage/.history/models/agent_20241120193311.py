@@ -76,17 +76,6 @@ class VCCAgent(models.Model):
                 f"Failed to fetch agents: {response.status_code} - {response.text}"
             )
 
-        # Test data:
-        print(f"MT TEST DATA")
-        test_users = [
-            {"userId": "1", "name": "Agent A", "email": "a@example.com"},
-            {"userId": "2", "name": "Agent B", "email": "b@example.com"},
-            {"userId": "3", "name": "Agent C", "email": "c@example.com"},
-        ]
-
-        # Parse the test data
-        self.env["vcc.agent"].parse_users(test_users)
-
         # data = {}
 
     def parse_users(self, users):
@@ -94,26 +83,31 @@ class VCCAgent(models.Model):
         print(f"inside parse_users")
 
         for user in users:
-            agent_id = user.get("userId")  # Ensure this is unique for each user
-            name = user.get("name", "Unknown Name")
-            email = user.get("email", "No Email Provided")
+            # print(f"users {users}")
+            # print(f"user {user}")
+            agent_id = user.get("userId")
+            name = user.get("name")
+            print(f"name {name}")
+            email = user.get("email")
 
-            # # Skip if agent_id is missing
-            # if not agent_id:
-            #     print(f"Skipping user due to missing agent_id: {user}")
-            #     continue
-
-            # Search for an existing agent
+            # check if the agent exists
             agent_record = self.env["vcc.agent"].search(
                 [("agent_id", "=", agent_id)], limit=1
             )
+            print(f"agent_record {agent_record}")
             if agent_record:
-                print(f"Updating existing agent: {agent_id}")
+                print(f"inside if agent_record")
+                # Update the existing agent record
                 agent_record.write({"name": name, "email": email})
             else:
-                print(f"Creating new agent: {agent_id}")
+                print(f"inside else agent_record")
+                # Create a new agent record
                 self.env["vcc.agent"].create(
-                    {"agent_id": agent_id, "name": name, "email": email}
+                    {
+                        "agent_id": agent_id,
+                        "name": name,
+                        "email": email,
+                    }
                 )
 
         # {

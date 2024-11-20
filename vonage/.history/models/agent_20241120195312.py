@@ -63,6 +63,16 @@ class VCCAgent(models.Model):
         response = requests.get(url, headers=headers)
         print(f"MT TEST agent_response {response}")
 
+        # Test data:
+        test_users = [
+            {"userId": "1", "name": "Agent A", "email": "a@example.com"},
+            {"userId": "2", "name": "Agent B", "email": "b@example.com"},
+            {"userId": "3", "name": "Agent C", "email": "c@example.com"},
+        ]
+
+        # Parse the test data
+        env["vcc.agent"].parse_users(test_users)
+
         if response.status_code == 200:
             print(f"inside 200 status code")
             print(f"respose.json {response.json()}")
@@ -75,17 +85,6 @@ class VCCAgent(models.Model):
             raise ValueError(
                 f"Failed to fetch agents: {response.status_code} - {response.text}"
             )
-
-        # Test data:
-        print(f"MT TEST DATA")
-        test_users = [
-            {"userId": "1", "name": "Agent A", "email": "a@example.com"},
-            {"userId": "2", "name": "Agent B", "email": "b@example.com"},
-            {"userId": "3", "name": "Agent C", "email": "c@example.com"},
-        ]
-
-        # Parse the test data
-        self.env["vcc.agent"].parse_users(test_users)
 
         # data = {}
 

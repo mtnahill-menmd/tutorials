@@ -31,13 +31,13 @@ class APIToken(models.Model):
         # TODO add this to the relevant model
         # search through vonage auth model and get the generate token method
         # token_data = integration.sudo().generate_vonage_token()
-        token_data = integration.generate_vonage_token()
+        token_record = integration.generate_vonage_token()
 
         # check that the token data exists
-        if token_data and "access_token" in token_data:
+        if token_record and "access_token" in token_record:
             # calculate the Datetime of the expiration
             expiration_time = fields.Datetime.now() + timedelta(
-                seconds=token_data["expires_in"]
+                seconds=token_record["expires_in"]
             )
 
             # search in this model whether the token exists
@@ -51,7 +51,7 @@ class APIToken(models.Model):
                 self.create(
                     {"token": token_data["access_token"], "expiration": expiration_time}
                 )
-            return token_record
+            return token_data
         return None
 
     def action_test_token(self):

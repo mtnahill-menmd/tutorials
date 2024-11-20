@@ -51,7 +51,7 @@ class APIToken(models.Model):
                 self.create(
                     {"token": token_data["access_token"], "expiration": expiration_time}
                 )
-            return token_record
+            return token_data
         return None
 
     def action_test_token(self):
