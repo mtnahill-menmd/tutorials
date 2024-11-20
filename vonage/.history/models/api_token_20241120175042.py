@@ -19,7 +19,7 @@ class APIToken(models.Model):
             and token_record.expiration
             and token_record.expiration > fields.Datetime.now()
         ):
-            return token_record
+            return token_record.token
         return self.refresh_token()
 
     def refresh_token(self):

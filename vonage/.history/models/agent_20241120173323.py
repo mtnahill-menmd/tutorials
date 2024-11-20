@@ -44,7 +44,7 @@ class VCCAgent(models.Model):
         url = f"https://{region}.api.cc.vonage.com/useradmin/users?include=All"
 
         # get valid token
-        token = self.env["api.token"].sudo().get_valid_token().token
+        token = self.env["api.token"].sudo().get_valid_token()
 
         print(f"inside query_agent")
         print(f"token {token}")
@@ -60,11 +60,7 @@ class VCCAgent(models.Model):
 
         if response.status_code == 200:
             print(f"inside 200 status code")
-            print(f"respose.json {response.json()}")
-            users = response.json()
-
-            # users = response.json().get("users", [])
-            print(f"users {users}")
+            users = response.json().get("users", [])
             self.parse_users(users)  # process and store users
         else:
             raise ValueError(
@@ -78,11 +74,10 @@ class VCCAgent(models.Model):
         print(f"inside parse_users")
 
         for user in users:
-            # print(f"users {users}")
-            # print(f"user {user}")
+            print(f"users {users}")
+            print(f"user {user}")
             agent_id = user.get("userId")
             name = user.get("name")
-            print(f"name {name}")
             email = user.get("email")
 
             # check if the agent exists

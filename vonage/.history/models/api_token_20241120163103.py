@@ -11,9 +11,7 @@ class APIToken(models.Model):
 
     def get_valid_token(self):
         """Retrieve a valid token or refresh it if expired"""
-        print(f"inside get_valid_token")
         token_record = self.search([], limit=1)
-        print(f"token_record {token_record}")
         if (
             token_record
             and token_record.expiration

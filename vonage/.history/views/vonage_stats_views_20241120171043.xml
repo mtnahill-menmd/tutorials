@@ -35,7 +35,7 @@
                 <header>
                     <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary"/>
                 </header>
-                <!-- <sheet>
+                <sheet>
                     <group>
                         <field name="name"/>
                         <field name="agent_id"/>
@@ -43,7 +43,7 @@
                         <field name="workload_ids"/>
                         <field name="interaction_ids"/>
                     </group>
-                </sheet> -->
+                </sheet>
             </form>
         </field>
     </record>

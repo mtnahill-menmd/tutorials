@@ -44,7 +44,7 @@ class VCCAgent(models.Model):
         url = f"https://{region}.api.cc.vonage.com/useradmin/users?include=All"
 
         # get valid token
-        token = self.env["api.token"].sudo().get_valid_token().token
+        token = self.env["api.token"].sudo().get_valid_token()
 
         print(f"inside query_agent")
         print(f"token {token}")

@@ -8,7 +8,7 @@ class VCCAgent(models.Model):
 
     agent_id = fields.Char(
         string="Agent ID",
-        # required=True,
+        required=True,
         readonly=True,
         copy=False,
     )
@@ -41,48 +41,33 @@ class VCCAgent(models.Model):
 
     def query_agent(self):
         region = "nam"
-        url = f"https://{region}.api.cc.vonage.com/useradmin/users?include=All"
+        url = "https://{region}.api.cc.vonage.com/useradmin/users?include=All"
 
         # get valid token
-        token = self.env["api.token"].sudo().get_valid_token().token
-
-        print(f"inside query_agent")
-        print(f"token {token}")
+        token = self.env["api.token"].sudo().get_valid_token()
         if not token:
             raise ValueError("No valid token available. Please refresh token.")
-
+        
         # prep headers for query
-        headers = {"Authorization": f"Bearer {token}"}
+        headers = {"Authorization": "Bearer" {token}}
 
         # Make get request
         response = requests.get(url, headers=headers)
-        print(f"MT TEST agent_response {response}")
-
+        
         if response.status_code == 200:
-            print(f"inside 200 status code")
-            print(f"respose.json {response.json()}")
-            users = response.json()
-
-            # users = response.json().get("users", [])
-            print(f"users {users}")
-            self.parse_users(users)  # process and store users
+            users = response.json().get("users", [])
+            self.parse_users(users) # process and store users
         else:
-            raise ValueError(
-                f"Failed to fetch agents: {response.status_code} - {response.text}"
-            )
+            raise ValueError(f"Failed to fetch agents: {response.status_code} - {response.text}")
 
         # data = {}
 
     def parse_users(self, users):
         """Parse and store user data in vcc.agent"""
-        print(f"inside parse_users")
 
         for user in users:
-            # print(f"users {users}")
-            # print(f"user {user}")
             agent_id = user.get("userId")
             name = user.get("name")
-            print(f"name {name}")
             email = user.get("email")
 
             # check if the agent exists
@@ -92,12 +77,10 @@ class VCCAgent(models.Model):
                 agent_record.write({"name": name})
             else:
                 # create a new agent record
-                self.create(
-                    {
-                        "agent_id": agent_id,
-                        "name": name,
-                    }
-                )
+                self.create({
+                    "agent_id": agent_id,
+                    "name": name,
+                })
 
         # {
         #     "userId": "21bf9827-190e-4865-b1a5-f84b6d12533c",
