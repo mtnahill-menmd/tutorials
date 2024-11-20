@@ -17,11 +17,6 @@ class VCCAgent(models.Model):
         readonly=True,
         copy=False,
     )
-    email = fields.Char(
-        string="Agent Email",
-        readonly=True,
-        copy=False,
-    )
     presence_ids = fields.One2many(
         "vcc.presence",
         "agent_id",
@@ -49,8 +44,8 @@ class VCCAgent(models.Model):
         url = f"https://{region}.api.cc.vonage.com/useradmin/users?include=All"
 
         # get valid token
-        token_record = self.env["api.token"].sudo().get_valid_token_record()
-        token = token_record.token
+        token = self.env["api.token"].sudo().get_valid_token()
+
         print(f"inside query_agent")
         print(f"token {token}")
         if not token:
@@ -91,22 +86,16 @@ class VCCAgent(models.Model):
             email = user.get("email")
 
             # check if the agent exists
-            agent_record = self.env["vcc.agent"].search(
-                [("agent_id", "=", agent_id)], limit=1
-            )
-            print(f"agent_record {agent_record}")
+            agent_record = self.search([("agent_id", "=", agent_id)], limit=1)
             if agent_record:
-                print(f"inside if agent_record")
-                # Update the existing agent record
-                agent_record.write({"name": name, "email": email})
+                # update the agent record
+                agent_record.write({"name": name})
             else:
-                print(f"inside else agent_record")
-                # Create a new agent record
-                self.env["vcc.agent"].create(
+                # create a new agent record
+                self.create(
                     {
                         "agent_id": agent_id,
                         "name": name,
-                        "email": email,
                     }
                 )
 

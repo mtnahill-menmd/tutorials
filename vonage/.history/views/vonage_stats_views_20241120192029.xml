@@ -6,7 +6,7 @@
         <field name="name">Agents</field>
         <field name="res_model">vcc.agent</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_vcc_agent_tree"/> <!-- Explicitly link tree view -->
+        <field name="view_id" ref="view_vcc_agent_tree"/> <!-- Explicitly link the tree view -->
     </record>
 
     <!-- Tree View -->
@@ -16,7 +16,6 @@
         <field name="arch" type="xml">
             <tree string="Agents">
                 <header>
-                    <!-- Button for Fetch Agents -->
                     <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary"/>
                 </header>
                 <field name="agent_id"/>
@@ -32,10 +31,9 @@
         <field name="model">vcc.agent</field>
         <field name="arch" type="xml">
             <form string="Agent">
-                <header>
-                    <!-- Button for Fetch Agents -->
+                <!-- <header>
                     <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary"/>
-                </header>
+                </header> -->
                 <sheet>
                     <group>
                         <field name="agent_id"/>

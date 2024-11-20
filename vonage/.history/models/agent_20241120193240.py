@@ -96,11 +96,9 @@ class VCCAgent(models.Model):
             )
             print(f"agent_record {agent_record}")
             if agent_record:
-                print(f"inside if agent_record")
                 # Update the existing agent record
                 agent_record.write({"name": name, "email": email})
             else:
-                print(f"inside else agent_record")
                 # Create a new agent record
                 self.env["vcc.agent"].create(
                     {

@@ -49,7 +49,7 @@ class VonageIntegration(models.Model):
 
     def call_vonage_api(self, endpoint, payload):
         """Make an authenticated call to a Vonage API endpoint"""
-        token_record = self.env["api_token"].sudo().get_valid_token_record()
+        token_record = self.env["api_token"].sudo().get_valid_token()
         token = token_record.token
         if not token:
             return {"error": "No valid token available"}

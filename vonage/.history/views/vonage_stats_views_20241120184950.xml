@@ -6,7 +6,6 @@
         <field name="name">Agents</field>
         <field name="res_model">vcc.agent</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_vcc_agent_tree"/> <!-- Explicitly link tree view -->
     </record>
 
     <!-- Tree View -->
@@ -16,12 +15,10 @@
         <field name="arch" type="xml">
             <tree string="Agents">
                 <header>
-                    <!-- Button for Fetch Agents -->
                     <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary"/>
                 </header>
                 <field name="agent_id"/>
                 <field name="name"/>
-                <field name="email"/>
             </tree>
         </field>
     </record>
@@ -33,7 +30,6 @@
         <field name="arch" type="xml">
             <form string="Agent">
                 <header>
-                    <!-- Button for Fetch Agents -->
                     <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary"/>
                 </header>
                 <sheet>
@@ -46,7 +42,7 @@
         </field>
     </record>
 
-<!-- 
+
         ###############################################
     <record id="action_vcc_agent" model="ir.actions.act_window">
         <field name="name">Agents</field>
@@ -78,7 +74,7 @@
                 </header>
             </form>
         </field>
-    </record> -->
+    </record>
 
     <record id="action_vcc_presence" model="ir.actions.act_window">
         <field name="name">Presence Records</field>

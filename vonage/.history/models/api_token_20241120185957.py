@@ -9,9 +9,9 @@ class APIToken(models.Model):
     token = fields.Text(string="Access Token", readonly=True)
     expiration = fields.Datetime(string="Expiration Time", readonly=True)
 
-    def get_valid_token_record(self):
+    def get_valid_token(self):
         """Retrieve a valid token or refresh it if expired"""
-        print(f"inside get_valid_token_record")
+        print(f"inside get_valid_token")
         token_record = self.search([], limit=1)
         print(f"token_record {token_record}")
         if (
@@ -19,8 +19,8 @@ class APIToken(models.Model):
             and token_record.expiration
             and token_record.expiration > fields.Datetime.now()
         ):
-            # token = token_record.token
-            return token_record
+            token = token_record.token
+            return
         return self.refresh_token()
 
     def refresh_token(self):
@@ -58,7 +58,7 @@ class APIToken(models.Model):
         """Test if the token is valid and populate expiration."""
 
         # Fetch the latest token and ensure it's valid
-        token_record = self.get_valid_token_record()
+        token_record = self.get_valid_token()
 
         # If a valid token is found or refreshed, update the current record
         if token_record:

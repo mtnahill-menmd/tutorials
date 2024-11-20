@@ -32,10 +32,6 @@
         <field name="model">vcc.agent</field>
         <field name="arch" type="xml">
             <form string="Agent">
-                <header>
-                    <!-- Button for Fetch Agents -->
-                    <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary"/>
-                </header>
                 <sheet>
                     <group>
                         <field name="agent_id"/>

@@ -17,11 +17,7 @@ class VCCAgent(models.Model):
         readonly=True,
         copy=False,
     )
-    email = fields.Char(
-        string="Agent Email",
-        readonly=True,
-        copy=False,
-    )
+    email = fields.Char(string="Agent Email", readonly=True, copy=False)
     presence_ids = fields.One2many(
         "vcc.presence",
         "agent_id",
@@ -94,13 +90,10 @@ class VCCAgent(models.Model):
             agent_record = self.env["vcc.agent"].search(
                 [("agent_id", "=", agent_id)], limit=1
             )
-            print(f"agent_record {agent_record}")
             if agent_record:
-                print(f"inside if agent_record")
                 # Update the existing agent record
                 agent_record.write({"name": name, "email": email})
             else:
-                print(f"inside else agent_record")
                 # Create a new agent record
                 self.env["vcc.agent"].create(
                     {
