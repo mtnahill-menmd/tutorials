@@ -5,7 +5,7 @@ class Workload(models.Model):
     _name = "vcc.workload"
     _description = "VCC Workload. Records workload metrics, such as calls and semi-live/non-live interactions."
 
-    username = fields.Many2one(
+    agent_id = fields.Many2one(
         "vcc.agent",
         string="Agent",
         ondelete="cascade",

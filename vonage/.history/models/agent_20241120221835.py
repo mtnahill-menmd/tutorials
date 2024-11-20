@@ -24,21 +24,21 @@ class VCCAgent(models.Model):
     )
     presence_ids = fields.One2many(
         "vcc.presence",
-        "username",
+        "agent_id",
         string="Presence Records",
         readonly=True,
         copy=False,
     )
     workload_ids = fields.One2many(
         "vcc.workload",
-        "username",
+        "agent_id",
         string="Workload Records",
         readonly=True,
         copy=False,
     )
     interaction_ids = fields.One2many(
         "vcc.interaction",
-        "username",
+        "agent_id",
         string="Interactions",
         readonly=True,
         copy=False,
@@ -76,40 +76,47 @@ class VCCAgent(models.Model):
                 f"Failed to fetch agents: {response.status_code} - {response.text}"
             )
 
-        # Reload the tree view
-        return {
-            "type": "ir.actions.client",
-            "tag": "reload",
-        }
+        # Test data:
+        print(f"MT TEST DATA")
+        test_users = [
+            {"userId": "1", "name": "Agent A", "email": "a@example.com"},
+            {"userId": "2", "name": "Agent B", "email": "b@example.com"},
+            {"userId": "3", "name": "Agent C", "email": "c@example.com"},
+        ]
+
+        # Parse the test data
+        self.env["vcc.agent"].parse_users(test_users)
+
+        # data = {}
 
     def parse_users(self, users):
         """Parse and store user data in vcc.agent"""
         print(f"inside parse_users")
 
+        print(f"USERS ######## {users}")
+
         for user in users:
-            username = user.get("username")
+            print(f"USER ###### {user}")
+            agent_id = user.get("userId")  # Ensure this is unique for each user
             name = user.get("name", "Unknown Name")
             email = user.get("email", "No Email Provided")
 
-            # Log the user data
-            print(f"Processing user: {user}")
-
-            # Skip if username is missing
-            if not username:
-                print(f"Skipping user due to missing username: {user}")
-                continue
+            # # Skip if agent_id is missing
+            # if not agent_id:
+            #     print(f"Skipping user due to missing agent_id: {user}")
+            #     continue
 
             # Search for an existing agent
             agent_record = self.env["vcc.agent"].search(
-                [("username", "=", username)], limit=1
+                [("agent_id", "=", agent_id)], limit=1
             )
-            if agent_record:
+            if agent_record is not None:
                 print(f"Updating existing agent: {agent_record}")
                 agent_record.write({"name": name, "email": email})
             else:
-                print(f"Creating new agent: {username}")
+                print(f"Creating new agent: {agent_id}")
                 self.env["vcc.agent"].create(
-                    {"username": username, "name": name, "email": email}
+                    {"agent_id": agent_id, "name": name, "email": email}
                 )
 
         # {

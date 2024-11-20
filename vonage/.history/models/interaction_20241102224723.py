@@ -5,7 +5,7 @@ class Interaction(models.Model):
     _name = "vcc.interaction"
     _description = "VCC Interaction. Logs details about each interaction, such as start/end time, type and status"
 
-    username = fields.Many2one(
+    agent_id = fields.Many2one(
         "vcc.agent",
         string="Agent",
         ondelete="cascade",

@@ -5,7 +5,7 @@ class Presence(models.Model):
     _name = "vcc.presence"
     _description = "VCC Presence. Captures the presence status details for an agent"
 
-    username = fields.Many2one(
+    agent_id = fields.Many2one(
         "vcc.agent",
         string="Agent",
         ondelete="cascade",

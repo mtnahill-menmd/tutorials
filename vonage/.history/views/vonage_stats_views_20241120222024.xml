@@ -19,7 +19,7 @@
                     <!-- Button for Fetch Agents -->
                     <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary"/>
                 </header>
-                <field name="username"/>
+                <field name="agent_id"/>
                 <field name="name"/>
                 <field name="email"/>
             </tree>
