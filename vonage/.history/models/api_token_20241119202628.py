@@ -3,7 +3,7 @@ from odoo import fields, models
 
 
 class APIToken(models.Model):
-    _name = "api.token"
+    _name = "api_token"
     _description = "Vonage / Odoo API token management"
 
     token = fields.Text(string="Access Token", readonly=True)
@@ -22,13 +22,11 @@ class APIToken(models.Model):
 
     def refresh_token(self):
         """Generate and save new token"""
-
         # env has all models and methods, search for the relevant one
         integration = self.env["vonage.auth.integration"]
         # TODO add this to the relevant model
         # search through vonage auth model and get the generate token method
-        # token_data = integration.sudo().generate_vonage_token()
-        token_data = integration.generate_vonage_token()
+        token_data = integration.sudo().generate_vonage_token()
 
         # check that the token data exists
         if token_data and "access_token" in token_data:
@@ -36,7 +34,6 @@ class APIToken(models.Model):
             expiration_time = fields.Datetime.now() + timedelta(
                 seconds=token_data["expires_in"]
             )
-
             # search in this model whether the token exists
             token_record = self.search([], limit=1)
             # check whether it exists
@@ -52,44 +49,26 @@ class APIToken(models.Model):
         return None
 
     def action_test_token(self):
-        """Test if the token is valid and populate expiration."""
-
-        # Fetch the latest token and ensure it's valid
-        token_record = self.get_valid_token()
-
-        # If a valid token is found or refreshed, update the current record
-        if token_record:
-            self.write(
-                {
-                    "token": token_record.token,
-                    "expiration": token_record.expiration,
-                }
-            )
-
-            # Check if the token is still valid
-            if (
-                token_record.expiration
-                and token_record.expiration > fields.Datetime.now()
-            ):
-                return {
-                    "type": "ir.actions.client",
-                    "tag": "display_notification",
-                    "params": {
-                        "title": "Token Active",
-                        "message": f"The token is valid and active until {token_record.expiration}.",
-                        "type": "success",
-                        "sticky": False,
-                    },
-                }
-
-        # If no valid token, display an error
-        return {
-            "type": "ir.actions.client",
-            "tag": "display_notification",
-            "params": {
-                "title": "Token Expired",
-                "message": "The token has expired or is missing. Please refresh it.",
-                "type": "danger",
-                "sticky": False,
-            },
-        }
+        """Test if token is valid"""
+        if self.expiration and self.expiration > fields.Datetime.now():
+            return {
+                "type": "ir.actions.client",
+                "tag": "display_notification",
+                "params": {
+                    "title": "Token Active",
+                    "message": "The token is valid and active",
+                    "type": "success",
+                    "sticky": False,
+                },
+            }
+        else:
+            return {
+                "type": "ir.actions.client",
+                "tag": "display_notification",
+                "params": {
+                    "title": "Token Active",
+                    "message": "The token is valid and active",
+                    "type": "danger",
+                    "sticky": False,
+                },
+            }

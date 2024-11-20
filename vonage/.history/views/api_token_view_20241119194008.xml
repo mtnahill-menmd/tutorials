@@ -20,4 +20,5 @@
         <field name="view_mode">form</field>
     </record>
     
+    <menuitem id="menu_api_token" name="API Token" parent="menu_vcc_root" action="action_api_token" sequence="60"/>
 </odoo>

@@ -11,6 +11,7 @@ class VonageIntegration(models.Model):
 
     def generate_vonage_token(self):
         """Generate a new token for Vonage"""
+        print(f"MT Test generate_vonage_token")
         # credentials - should live somewhere more secure
         client_id = "06489f4e-8530-4e93-80a4-5344f9ba1b07"
         client_secret = "x1pHeh5tMXg1feUonhwRTwMJ229s7vPpNJBahD1j"
@@ -32,14 +33,17 @@ class VonageIntegration(models.Model):
 
         # POST request
         response = requests.post(url, headers=headers, data=data)
+        print(f"response: {response}")
 
         # Write to field
         # self.token_response = response
 
         # Check response
         if response.status_code == 200:
+            print(f"response.status_code {response.status_code}")
             token_data = response.json()
-            return token_data
+            print(f"MT TEST token_data {token_data}")
+            # return token_data
         else:
             # Handle errors
             return {
