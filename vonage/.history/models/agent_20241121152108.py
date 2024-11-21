@@ -29,7 +29,7 @@ class VCCAgent(models.Model):
         readonly=True,
         copy=False,
     )
-    sso_external_id = fields.Char(
+    sso_external_id = fields.Integer(
         string="sso ID",
         readonly=True,
         copy=False,
@@ -102,7 +102,7 @@ class VCCAgent(models.Model):
             username = user.get("username")
             name = user.get("name", "Unknown Name")
             email = user.get("email", "No Email Provided")
-            sso_external_id = user.get("ssoExternalId")
+            sso_external_id = user.get("sso_external_id")
 
             last_login_time_iso = user.get("userLastLogin")
             parsed_date = datetime.strptime(last_login_time_iso, "%Y-%m-%dT%H:%M:%SZ")

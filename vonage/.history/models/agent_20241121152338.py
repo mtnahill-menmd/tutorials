@@ -29,7 +29,7 @@ class VCCAgent(models.Model):
         readonly=True,
         copy=False,
     )
-    sso_external_id = fields.Char(
+    sso_external_id = fields.Integer(
         string="sso ID",
         readonly=True,
         copy=False,

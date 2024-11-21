@@ -17,13 +17,12 @@
             <tree string="Agents">
                 <header>
                     <!-- Button for Fetch Agents -->
-                    <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary" context="{'active_model': 'vcc.agent'}"/>
+                    <button name="query_agent" type="object" string="Fetch Agents" class="btn-primary"/>
                 </header>
                 <field name="username"/>
                 <field name="name"/>
                 <field name="email"/>
-                <field name="last_login_time"/>
-                <field name="sso_external_id"/>
+                <field name="userId"/>>
             </tree>
         </field>
     </record>

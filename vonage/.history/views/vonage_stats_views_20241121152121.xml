@@ -23,7 +23,7 @@
                 <field name="name"/>
                 <field name="email"/>
                 <field name="last_login_time"/>
-                <field name="sso_external_id"/>
+                <field name="sso_external_id"/>>
             </tree>
         </field>
     </record>

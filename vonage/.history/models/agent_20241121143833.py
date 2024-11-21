@@ -1,7 +1,5 @@
-from datetime import datetime
 import requests
 from odoo import fields, models
-from odoo.fields import Datetime
 
 
 class VCCAgent(models.Model):
@@ -26,11 +24,6 @@ class VCCAgent(models.Model):
     )
     last_login_time = fields.Datetime(
         string="Last Login Time",
-        readonly=True,
-        copy=False,
-    )
-    sso_external_id = fields.Char(
-        string="sso ID",
         readonly=True,
         copy=False,
     )
@@ -102,11 +95,7 @@ class VCCAgent(models.Model):
             username = user.get("username")
             name = user.get("name", "Unknown Name")
             email = user.get("email", "No Email Provided")
-            sso_external_id = user.get("ssoExternalId")
-
-            last_login_time_iso = user.get("userLastLogin")
-            parsed_date = datetime.strptime(last_login_time_iso, "%Y-%m-%dT%H:%M:%SZ")
-            last_login_time = Datetime.to_string(parsed_date)
+            last_login_time = user.get("userLastLogin")
             print(f"last login time {last_login_time}")
 
             # Log the user data
@@ -121,21 +110,19 @@ class VCCAgent(models.Model):
             agent_record = self.env["vcc.agent"].search(
                 [("username", "=", username)], limit=1
             )
-
-            updated_agent_record = {
-                "username": username,
-                "name": name,
-                "email": email,
-                "last_login_time": last_login_time,
-                "sso_external_id": sso_external_id,
-            }
-
             if agent_record:
                 print(f"Updating existing agent: {agent_record}")
-                agent_record.write(updated_agent_record)
+                agent_record.write({"name": name, "email": email})
             else:
                 print(f"Creating new agent: {username}")
-                self.env["vcc.agent"].create(updated_agent_record)
+                self.env["vcc.agent"].create(
+                    {
+                        "username": username,
+                        "name": name,
+                        "email": email,
+                        "last_login_time": last_login_time,
+                    }
+                )
 
 
 # from datetime import datetime
