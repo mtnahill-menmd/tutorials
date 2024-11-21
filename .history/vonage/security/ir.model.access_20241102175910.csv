@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-vonage.access_vonage,access_vonage,vonage.model_vonage,base.group_user,1,1,1,1
-vonage.access_agent_availability,access_agent_availability,vonage.model_agent_availability,base.group_user,1,1,1,1
-vonage.access_presence_definition,access_presence_definition,vonage.model_presence_definition,base.group_user,1,1,1,1
