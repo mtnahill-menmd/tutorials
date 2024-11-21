@@ -10,6 +10,7 @@ class VCCAgent(models.Model):
 
     username = fields.Char(
         string="Username",
+        # required=True,
         readonly=True,
         copy=False,
     )
@@ -82,8 +83,11 @@ class VCCAgent(models.Model):
         response = requests.get(url, headers=headers)
 
         if response.status_code == 200:
+            # print(f"respose.json {response.json()}")
             users = response.json()
 
+            # users = response.json().get("users", [])
+            # print(f"users {users}")
             self.parse_users(users)  # process and store users
         else:
             raise ValueError(

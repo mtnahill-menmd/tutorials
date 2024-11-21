@@ -10,6 +10,7 @@ class VCCAgent(models.Model):
 
     username = fields.Char(
         string="Username",
+        # required=True,
         readonly=True,
         copy=False,
     )

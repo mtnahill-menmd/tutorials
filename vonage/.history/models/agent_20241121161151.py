@@ -10,6 +10,7 @@ class VCCAgent(models.Model):
 
     username = fields.Char(
         string="Username",
+        # required=True,
         readonly=True,
         copy=False,
     )
@@ -82,8 +83,11 @@ class VCCAgent(models.Model):
         response = requests.get(url, headers=headers)
 
         if response.status_code == 200:
+            print(f"respose.json {response.json()}")
             users = response.json()
 
+            # users = response.json().get("users", [])
+            print(f"users {users}")
             self.parse_users(users)  # process and store users
         else:
             raise ValueError(
@@ -105,6 +109,7 @@ class VCCAgent(models.Model):
             email = user.get("email", "No Email Provided")
             sso_external_id = user.get("ssoExternalId")
             chargeable = user.get("chargeable")
+            role = user.get("role")
 
             last_login_time_iso = user.get("userLastLogin")
             parsed_date = datetime.strptime(last_login_time_iso, "%Y-%m-%dT%H:%M:%SZ")
@@ -126,9 +131,59 @@ class VCCAgent(models.Model):
                 "last_login_time": last_login_time,
                 "sso_external_id": sso_external_id,
                 "chargeable": chargeable,
+                "role": role,
             }
 
             if agent_record:
                 agent_record.write(updated_agent_record)
             else:
                 self.env["vcc.agent"].create(updated_agent_record)
+
+
+# {
+#     "userId": "21bf9827-190e-4865-b1a5-f84b6d12533c",
+#     "lastLoginTime": "2024-11-16T14:11:52Z",
+#     "username": "adaly@menmd.com",
+#     "active": true,
+#     "name": "Adrian Daly",
+#     "email": "adaly@menmd.com",
+#     "ssoExternalId": "8149",
+#     "locked": false,
+#     "userAccountConfiguration": {
+#         "role": "Agent",
+#         "chargeable": true,
+#         "actAsAgent": true,
+#         "agentConfiguration": {
+#             "agentDisplayId": "8149",
+#             "webrtc": true,
+#             "agentControlWebrtc": true,
+#             "handleMultipleInteractions": false,
+#             "enforcedDispositionCodes": true,
+#             "nativeCallLogging": false,
+#             "srStartRecOnAlerting": false,
+#             "callParking": false,
+#             "salesCadence": false,
+#             "outboundAutoanswer": false,
+#             "inboundAutoanswer": false,
+#             "video": false,
+#             "transcribeCallsRealTime": false,
+#             "callRecordingControls": false,
+#             "location": "US",
+#             "telephonyAddress": {
+#                 "telephoneAddress": "8572335837",
+#                 "outboundTelephonyRegion": "be969939-22cd-a9d2-eb66-90dbafb506d6",
+#                 "nationalDisplay": true,
+#                 "virtualLocation": "US",
+#                 "preventAutoCallbackNumber": true,
+#                 "selectedCallbackNumberId": "",
+#             },
+#             "capacity": {
+#                 "isAgentLevel": false,
+#                 "live": 100,
+#                 "nonLive": 100,
+#                 "semiLive": 100,
+#             },
+#             "associatedUsers": [],
+#         },
+#     },
+# },
